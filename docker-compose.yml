@@ -1,0 +1,16 @@
+version: "3"
+services:
+  backend-map:
+    image: bkung19857/express-map1
+    ports:
+      - "5001:8080"
+  backend-map2:
+    image: bkung19857/express-map1
+    ports:
+      - "5002:8080"
+  nginx:
+    # build: ./nginx
+    image: bkung19857/nginx-map
+    ports:
+      - "8085:80"
+
