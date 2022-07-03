@@ -63,6 +63,9 @@ const getImage = () => {
 };
 
 app.post("/create", (req, res, next) => {
+
+  console.log(req.body)
+  console.log(req.files)
   const storageCloud = new Storage({
     projectId: "sixth-storm-353714",
     credentials: {
@@ -82,8 +85,8 @@ app.post("/create", (req, res, next) => {
     } else {
       // When Have File
       // Set File name and contents data 
-    const {name,data} = req.files.files
-    const {latitude,longitude} = JSON.parse(req.body.files) 
+    const {name,data} = req.files.fromUpload
+    const {latitude,longitude} = JSON.parse(req.body.fromUpload) 
     const fileName = uuidv4() + "-" + name
     const contents = data
     const file = bucket.file(`${fileName}`)
