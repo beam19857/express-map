@@ -30,6 +30,9 @@ app.use( // => Use Express File Upload
     createParentPath: true,
   })
 );
+app.use(express.json({
+  limit: '50mb'
+})); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -64,8 +67,6 @@ const getImage = () => {
 
 app.post("/create", (req, res, next) => {
 
-  console.log(req.body)
-  console.log(req.files)
   const storageCloud = new Storage({
     projectId: "sixth-storm-353714",
     credentials: {
